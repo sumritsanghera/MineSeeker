@@ -18,14 +18,7 @@ public class WelcomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_screen);
         getSupportActionBar().hide();
 
-        Button btn = (Button) findViewById(R.id.ws_button);
-        btn.setBackgroundColor(Color.WHITE);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMain();
-            }
-        });
+        setupSkipButton();
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -38,8 +31,16 @@ public class WelcomeScreen extends AppCompatActivity {
 
     }
 
-    private void openMain() {
-        Intent intent = new Intent(WelcomeScreen.this, MainActivity.class);
-        startActivity(intent);
+    private void setupSkipButton() {
+        Button btn = (Button) findViewById(R.id.ws_button);
+        btn.setBackgroundColor(Color.WHITE);
+        btn.setTextColor(Color.BLACK);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WelcomeScreen.this, MainActivity.class);
+                startActivity(intent);            }
+        });
     }
+
 }
