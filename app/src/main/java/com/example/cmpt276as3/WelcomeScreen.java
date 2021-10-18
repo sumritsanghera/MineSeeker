@@ -16,6 +16,7 @@ public class WelcomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
+        //https://www.youtube.com/watch?v=jXtof6OUtcE
         getSupportActionBar().hide();
 
         setupSkipButton();
