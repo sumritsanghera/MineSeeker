@@ -39,7 +39,9 @@ public class WelcomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(WelcomeScreen.this, MainActivity.class);
-                startActivity(intent);            }
+                startActivity(intent);
+                finish();
+            }
         });
     }
 
