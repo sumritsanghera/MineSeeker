@@ -2,8 +2,6 @@ package com.example.cmpt276as3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
@@ -25,8 +23,8 @@ public class OptionsUI extends AppCompatActivity {
         gameOptions = OptionsLogic.getInstance();
 
         GameSizeRadioButtons();
+        MineRadioButtons();
     }
-
 
 
     private void GameSizeRadioButtons() {
@@ -52,6 +50,33 @@ public class OptionsUI extends AppCompatActivity {
 
                     Toast.makeText(OptionsUI.this, numCellRow + "x" + numCellCol +
                             " Board Selected", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            group.addView(button);
+        }
+    }
+
+    private void MineRadioButtons() {
+        RadioGroup group = (RadioGroup) findViewById(R.id.radioGroupMineOptions);
+
+        int[] numMines = getResources().getIntArray(R.array.game_configuration_mines);
+
+        //Create the buttons
+        for(int i = 0; i < numMines.length; i++) {
+            final int numMine = numMines[i];
+
+            RadioButton button = new RadioButton(this);
+            button.setText(""+numMine);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    gameOptions.setNumMines(numMine);
+
+                    Toast.makeText(OptionsUI.this, numMine + " Mines Selected"
+                            , Toast.LENGTH_SHORT).show();
                 }
             });
 
