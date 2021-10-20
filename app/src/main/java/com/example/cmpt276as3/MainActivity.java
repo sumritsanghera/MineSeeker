@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.cmpt276as3.model.Game;
-import com.example.cmpt276as3.model.Options;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         btn_options.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Options.class);
+                Intent intent = new Intent(MainActivity.this, OptionsUI.class);
                 startActivity(intent);
             }
         });

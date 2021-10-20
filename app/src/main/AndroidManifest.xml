@@ -14,7 +14,7 @@
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".model.Options"
+            android:name=".OptionsUI"
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity

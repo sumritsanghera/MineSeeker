@@ -1,15 +1,14 @@
-package com.example.cmpt276as3.model;
+package com.example.cmpt276as3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
-import com.example.cmpt276as3.R;
-
-public class Options extends AppCompatActivity {
+public class OptionsUI extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +26,19 @@ public class Options extends AppCompatActivity {
 
         //Create the buttons
         for(int i = 0; i < numCellsRow.length; i++) {
-            int numCellRow = numCellsRow[i];
-            int numCellCol = numCellsCol[i];
+            final int numCellRow = numCellsRow[i];
+            final int numCellCol = numCellsCol[i];
 
             RadioButton button = new RadioButton(this);
             button.setText(""+ numCellRow + "x" + numCellCol);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(OptionsUI.this, numCellRow + "x" + numCellCol +
+                            " Board Selected", Toast.LENGTH_SHORT).show();
+                }
+            });
 
             group.addView(button);
         }
