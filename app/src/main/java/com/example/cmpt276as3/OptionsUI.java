@@ -2,27 +2,34 @@ package com.example.cmpt276as3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import com.example.cmpt276as3.model.OptionsLogic;
+
 
 public class OptionsUI extends AppCompatActivity {
+
+    private OptionsLogic gameOptions;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
-        
-        CreateRadioButtons();
+
+        gameOptions = OptionsLogic.getInstance();
+
+        GameSizeRadioButtons();
     }
 
 
 
-
-
-    private void CreateRadioButtons() {
+    private void GameSizeRadioButtons() {
         RadioGroup group = (RadioGroup) findViewById(R.id.radioGroupGameOptions);
 
         int[] numCellsRow = getResources().getIntArray(R.array.game_configuration_rows);
@@ -34,11 +41,15 @@ public class OptionsUI extends AppCompatActivity {
             final int numCellCol = numCellsCol[i];
 
             RadioButton button = new RadioButton(this);
-            button.setText(""+ numCellRow + "x" + numCellCol);
+            button.setText(numCellRow + "x" + numCellCol);
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    gameOptions.setNumRows(numCellRow);
+                    gameOptions.setNumColumns(numCellCol);
+
                     Toast.makeText(OptionsUI.this, numCellRow + "x" + numCellCol +
                             " Board Selected", Toast.LENGTH_SHORT).show();
                 }
@@ -46,6 +57,6 @@ public class OptionsUI extends AppCompatActivity {
 
             group.addView(button);
         }
-
     }
+
 }
