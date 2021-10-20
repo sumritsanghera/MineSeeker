@@ -19,6 +19,7 @@ public class OptionsUI extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
+        getSupportActionBar().hide();
 
         gameOptions = OptionsLogic.getInstance();
 
@@ -39,7 +40,7 @@ public class OptionsUI extends AppCompatActivity {
             final int numCellCol = numCellsCol[i];
 
             RadioButton button = new RadioButton(this);
-            button.setText(numCellRow + "x" + numCellCol);
+            button.setText(numCellRow+"x"+numCellCol);
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
