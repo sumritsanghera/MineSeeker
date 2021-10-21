@@ -1,4 +1,4 @@
-package com.example.cmpt276as3.model;
+package com.example.cmpt276as3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +18,7 @@ import com.example.cmpt276as3.R;
 
 import java.util.Random;
 
-public class Game extends AppCompatActivity {
+public class GameUI extends AppCompatActivity {
 
     private static final int NUM_ROWS = 4;
     private static final int NUM_COLS = 6;

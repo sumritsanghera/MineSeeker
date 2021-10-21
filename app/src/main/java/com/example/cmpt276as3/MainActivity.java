@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.cmpt276as3.model.Game;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -31,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         btn_playGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Game.class);
+                Intent intent = new Intent(MainActivity.this, GameUI.class);
                 startActivity(intent);
             }
         });
