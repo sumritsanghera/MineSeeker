@@ -10,12 +10,13 @@ import android.view.View;
 import android.widget.Button;
 
 public class WelcomeScreen extends AppCompatActivity {
-    private static int TIMEOUT = 4000;
+    private static int TIMEOUT = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
+        //https://www.youtube.com/watch?v=jXtof6OUtcE
         getSupportActionBar().hide();
 
         setupSkipButton();

@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class Game extends AppCompatActivity {
 
-    private static final int NUM_ROWS = 6;
+    private static final int NUM_ROWS = 4;
     private static final int NUM_COLS = 6;
     private static final int NUM_MINES = 20;
     static int scansUsed = 0;
@@ -109,7 +109,7 @@ public class Game extends AppCompatActivity {
 
         int newWidth = button.getWidth();
         int newHeight = button.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.action_lock_pink);
+        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.plankton);
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
         Resources resource = getResources();
 
@@ -118,7 +118,7 @@ public class Game extends AppCompatActivity {
         button.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
         // Change text on button:
-        button.setText("" + col);
+        button.setText(" ");
 
     }
 

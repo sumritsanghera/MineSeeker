@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".model.Options">
+    android:background="@drawable/bikini_bottom_background"
+    tools:context=".OptionsUI">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/o_options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Options"
@@ -19,4 +20,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.102" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupGameOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="75dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toStartOf="@+id/o_options"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/o_options" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupMineOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/o_options"
+        app:layout_constraintTop_toTopOf="@+id/radioGroupGameOptions" />
+
+    <TextView
+        android:id="@+id/o_gameSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Board Size"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroupGameOptions"
+        app:layout_constraintStart_toStartOf="@+id/radioGroupGameOptions"
+        app:layout_constraintTop_toBottomOf="@+id/o_options" />
+
+    <TextView
+        android:id="@+id/o_numberOfMines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Number of Mines"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroupMineOptions"
+        app:layout_constraintStart_toEndOf="@+id/o_options"
+        app:layout_constraintTop_toBottomOf="@+id/o_options"
+        app:layout_constraintVertical_bias="0.484" />
 </androidx.constraintlayout.widget.ConstraintLayout>
