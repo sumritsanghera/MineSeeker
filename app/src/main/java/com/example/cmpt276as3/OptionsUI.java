@@ -2,8 +2,13 @@ package com.example.cmpt276as3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -13,6 +18,10 @@ import com.example.cmpt276as3.model.OptionsLogic;
 public class OptionsUI extends AppCompatActivity {
 
     private OptionsLogic gameOptions;
+
+    public static Intent makeIntent(Context context) {
+        return new Intent(context, OptionsUI.class);
+    }
 
 
     @Override
@@ -25,6 +34,21 @@ public class OptionsUI extends AppCompatActivity {
 
         GameSizeRadioButtons();
         MineRadioButtons();
+    }
+
+
+    private void saveButton() {
+        Button btn = (Button) findViewById(R.id.find_selected);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RadioGroup boardSize = (RadioGroup) findViewById(R.id.radioGroupGameOptions);
+                int idOfSelected = boardSize.getCheckedRadioButtonId();
+                RadioButton radioButton = findViewById(idOfSelected);
+
+
+            }
+        });
     }
 
 
@@ -53,8 +77,14 @@ public class OptionsUI extends AppCompatActivity {
                             " Board Selected", Toast.LENGTH_SHORT).show();
                 }
             });
-
+            int selectedRow = gameOptions.getNumRows();
+            boolean isSelected = (selectedRow == numCellRow);
             group.addView(button);
+
+            if (isSelected) {
+                button.setChecked(true);
+            }
+
         }
     }
 
@@ -75,14 +105,75 @@ public class OptionsUI extends AppCompatActivity {
                 public void onClick(View view) {
 
                     gameOptions.setNumMines(numMine);
+                    saveMine(gameOptions);
 
                     Toast.makeText(OptionsUI.this, numMine + " Mines Selected"
                             , Toast.LENGTH_SHORT).show();
                 }
             });
 
+            boolean isSelected = (gameOptions.getNumMines() == i);
+
             group.addView(button);
+
+            if (isSelected) {
+                button.setChecked(true);
+            }
+
+
         }
     }
 
+    private void saveSize(OptionsLogic options) {
+
+        SharedPreferences sizeShare = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = sizeShare.edit();
+
+        editor.putInt("row number",options.getNumRows());
+        editor.putInt("col number",options.getNumColumns());
+        editor.apply();
+    }
+
+    private void saveMine(OptionsLogic options) {
+
+        SharedPreferences mineShare = this.getSharedPreferences("mineShare",MODE_PRIVATE);
+        SharedPreferences.Editor editor = mineShare.edit();
+
+        editor.putInt("mine number", options.getNumMines());
+        editor.apply();
+    }
+
+    public void getRowNumberSaved(){
+        RadioGroup boardSize = (RadioGroup) findViewById(R.id.radioGroupGameOptions);
+        int idOfSelected = boardSize.getCheckedRadioButtonId();
+        RadioButton radioButton = findViewById(idOfSelected);
+
+        SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(this);
+        int row = gameOptions.getNumRows();
+        radioButton.getResources().getInteger(row);
+
+    }
+
+     public void getColNumberSaved(){
+        RadioGroup boardSize = (RadioGroup) findViewById(R.id.radioGroupGameOptions);
+        int idOfSelected = boardSize.getCheckedRadioButtonId();
+        RadioButton radioButton = findViewById(idOfSelected);
+
+        SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(this);
+        int col = gameOptions.getNumColumns();
+        radioButton.getResources().getInteger(col);
+
+    }
+
+
+     public void getMineNumberSaved(){
+         RadioGroup radioMines = (RadioGroup) findViewById(R.id.radioGroupMineOptions);
+         int idOfSelected = radioMines.getCheckedRadioButtonId();
+         RadioButton radioButton = findViewById(idOfSelected);
+
+         SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(this);
+         int mines = gameOptions.getNumMines();
+         radioButton.getResources().getInteger(mines);
+
+    }
 }

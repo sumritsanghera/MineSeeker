@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bikini_bottom_background"
-    tools:context=".model.Game">
+    tools:context=".GameUI">
 
     <TableLayout
         android:id="@+id/tableForButtons"
