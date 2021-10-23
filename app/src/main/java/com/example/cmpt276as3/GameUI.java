@@ -21,8 +21,8 @@ import com.example.cmpt276as3.model.OptionsLogic;
 
 public class GameUI extends AppCompatActivity {
 
-    private static final int NUM_ROWS = 6;
-    private static final int NUM_COLS = 4;
+    //private static final int NUM_ROWS = 6;
+    //private static final int NUM_COLS = 4;
     static int scansUsed = 0;
 
     OptionsLogic options = OptionsLogic.getInstance();
@@ -30,12 +30,7 @@ public class GameUI extends AppCompatActivity {
             options.getNumMines());
 
 
-    ///private Button[][] buttons;
     Button[][] buttons = new Button[options.getNumRows()][options.getNumColumns()];
-
-//    public static Intent makeIntent(Context context) {
-//        return new Intent(context, GameUI.class);
-//    }
 
 
     @Override
@@ -43,6 +38,13 @@ public class GameUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         getSupportActionBar().hide();
+
+//        OptionsLogic options = OptionsLogic.getInstance();
+//        Game = new GameLogic(options.getNumRows(),
+//                            options.getNumColumns(), options.getNumMines());
+//
+//        buttons = new Button[options.getNumRows()][options.getNumColumns()];
+
 
 
         populateButtons();
@@ -74,7 +76,8 @@ public class GameUI extends AppCompatActivity {
                         TableRow.LayoutParams.MATCH_PARENT,
                         1.0f));
 
-                button.setText("" + col + "," + row);
+                //button.setText("" + col + "," + row);
+                button.setText("?");
 
                 // Make text not clip on small buttons
                 button.setPadding(0, 0, 0, 0);
@@ -104,31 +107,31 @@ public class GameUI extends AppCompatActivity {
         // Lock Button Sizes:
         lockButtonSizes();
 
-        // Does not scale image.
-//    	button.setBackgroundResource(R.drawable.action_lock_pink);
+        //TODO INSERT ANIMATION / VIBRATION HERE
 
-        // Scale image to button: Only works in JellyBean!
-        // Image from Crystal Clear icon set, under LGPL
-        // http://commons.wikimedia.org/wiki/Crystal_Clear
+        //Shows image if mine present
+        if (Game.minePresent(row,col)) {
+            updateGame();
+            // Does not scale image.
+            // Scale image to button: Only works in JellyBean!
+            int newWidth = button.getWidth();
+            int newHeight = button.getHeight();
+            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.plankton);
+            Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
+            Resources resource = getResources();
+            button.setBackground(new BitmapDrawable(resource, scaledBitmap));
 
-
-
-
-        int newWidth = button.getWidth();
-        int newHeight = button.getHeight();
-        Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.plankton);
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap, newWidth, newHeight, true);
-        Resources resource = getResources();
-        button.setBackground(new BitmapDrawable(resource, scaledBitmap));
-
-        // Change text on button:
-        button.setText(" ");
-
+            // Change text on button:
+            button.setText(" ");
+        }
+        else {
+            updateGame();
+        }
     }
 
     private void lockButtonSizes() {
-        for (int row = 0; row < NUM_ROWS; row++) {
-            for (int col = 0; col < NUM_COLS; col++) {
+        for (int row = 0; row < options.getNumRows(); row++) {
+            for (int col = 0; col < options.getNumColumns(); col++) {
                 Button button = buttons[row][col];
 
                 int width = button.getWidth();
@@ -142,9 +145,20 @@ public class GameUI extends AppCompatActivity {
         }
     }
     //END SOURCE CODE
+
     private void updateScans() {
         TextView numScans = (TextView) findViewById(R.id.g_numScans);
         numScans.setText("" + scansUsed);
+    }
+
+    private void updateGame() {
+        int rows = Game.getNumRows();
+        int cols = Game.getNumColumns();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                Button btn = buttons[i][j];
+            }
+        }
     }
 
 }

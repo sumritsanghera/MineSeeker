@@ -77,11 +77,13 @@ public class OptionsUI extends AppCompatActivity {
                             " Board Selected", Toast.LENGTH_SHORT).show();
                 }
             });
+            //setChecked
+            //https://www.tabnine.com/code/java/methods/android.widget.CheckBox/setChecked
             int selectedRow = gameOptions.getNumRows();
-            boolean isSelected = (selectedRow == numCellRow);
+            boolean buttonSelected = (selectedRow == numCellRow);
             group.addView(button);
 
-            if (isSelected) {
+            if (buttonSelected) {
                 button.setChecked(true);
             }
 
@@ -105,18 +107,19 @@ public class OptionsUI extends AppCompatActivity {
                 public void onClick(View view) {
 
                     gameOptions.setNumMines(numMine);
-                    saveMine(gameOptions);
+                    //saveMine(gameOptions);
 
                     Toast.makeText(OptionsUI.this, numMine + " Mines Selected"
                             , Toast.LENGTH_SHORT).show();
                 }
             });
 
-            boolean isSelected = (gameOptions.getNumMines() == i);
+            int selectedMine = gameOptions.getNumMines();
+            boolean buttonSelected = (selectedMine == numMine);
 
             group.addView(button);
 
-            if (isSelected) {
+            if (buttonSelected) {
                 button.setChecked(true);
             }
 
@@ -124,6 +127,7 @@ public class OptionsUI extends AppCompatActivity {
         }
     }
 
+    //https://stackoverflow.com/questions/11482111/how-to-save-the-state-of-radio-buttons
     private void saveSize(OptionsLogic options) {
 
         SharedPreferences sizeShare = PreferenceManager.getDefaultSharedPreferences(this);

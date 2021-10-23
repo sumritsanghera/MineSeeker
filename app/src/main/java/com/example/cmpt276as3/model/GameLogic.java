@@ -10,42 +10,54 @@ public class GameLogic {
 
     private MineLogic[][] mines;
 
-    //private OptionsLogic options = OptionsLogic.getInstance();
-
-
     public GameLogic(int numRows, int numColumns, int numMines) {
         this.numRows = numRows;
         this.numColumns = numColumns;
         this.numMines = numMines;
+
+        this.mines = new MineLogic[numRows][numColumns];
+        createButtons();
+        addMines(numMines);
+
     }
 
     public int getNumRows() {
+
         return numRows;
     }
 
     public int getNumColumns() {
+
         return numColumns;
     }
 
-    public void SetMines(int numMines) {
+    //creates a layer of empty mine buttons behind the UI buttons
+    private void createButtons() {
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j < numColumns; j++) {
+                mines[i][j] = new MineLogic(false);
+            }
+        }
+    }
+
+    public void addMines(int mineNum) {
         //Random Number
         //https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java
         Random rand = new Random();
 
-        //buttons = new int[numRows][numColumns];
+        int rows = numRows;
+        int cols = numColumns;
 
-//        for (int i = 0; i < numMines; i++) {
-//            int row = rand.nextInt(numRows);
-//            int col = rand.nextInt(numColumns);
+        for (int i = 0; i < numMines; i++) {
 
-        while(numMines != 0) {
-            int row = rand.nextInt(numRows);
-            int col = rand.nextInt(numColumns);
-
-            if(mines[row][col].isMinePresent() == false) {
-                mines[row][col] = new MineLogic(true);
+            while(mineNum != 0) {
+                int col = rand.nextInt(cols);
+                int row = rand.nextInt(rows);
+                if(mines[row][col].isMinePresent() == false) {
+                    mines[row][col].setMinePresent(true);
+                    mineNum--;
+                }
             }
-            numMines--;
         }
     }
 
@@ -77,11 +89,21 @@ public class GameLogic {
         return count;
     }
 
+    public boolean isMineVisible(int row, int col) {
+        return mines[row][col].isMineVisible();
+    }
+
+    public boolean minePresent(int row, int col) {
+        return mines[row][col].isMinePresent();
+    }
+
+    public boolean isMineScanned(int row, int col) {
+        return mines[row][col].isMineScanned();
+    }
+
     public boolean endGame() {
         return numMines == NumMinesFound();
 
     }
-
-
 
 }
