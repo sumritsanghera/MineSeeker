@@ -2,9 +2,14 @@ package com.example.cmpt276as3.model;
 
 public class OptionsLogic {
 
-    private int numRows;
-    private int numColumns;
-    private int numMines;
+    private int DEFAULT_NUM_ROWS = 4;
+    private int DEFAULT_NUM_COLS = 6;
+    private int DEFAULT_NUM_MINES = 10;
+
+    //Initiate with default values so "PLAY GAME" Button works on main screen
+    private int numRows = DEFAULT_NUM_ROWS;
+    private int numColumns = DEFAULT_NUM_COLS;
+    private int numMines = DEFAULT_NUM_MINES;
 
     //Singleton Support
     private static OptionsLogic instance;

@@ -7,6 +7,8 @@
     android:background="@drawable/bikini_bottom_background"
     tools:context=".GameUI">
 
+
+
     <TableLayout
         android:id="@+id/tableForButtons"
         android:layout_width="match_parent"
@@ -19,6 +21,9 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </TableLayout>
+
+
+
 
     <TextView
         android:id="@+id/g_scansUsed"

@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -31,6 +32,7 @@ public class GameUI extends AppCompatActivity {
 
 
     Button[][] buttons = new Button[options.getNumRows()][options.getNumColumns()];
+    ImageView img;
 
 
     @Override
@@ -53,7 +55,6 @@ public class GameUI extends AppCompatActivity {
 
     }
     //BEGIN SOURCE CODE
-
     private void populateButtons() {
 
         TableLayout table = (TableLayout) findViewById(R.id.tableForButtons);
@@ -99,7 +100,7 @@ public class GameUI extends AppCompatActivity {
     }
 
     private void gridButtonClicked(int col, int row) {
-        scansUsed++;
+
         Toast.makeText(this, "Button clicked: " + col + "," + row,
                 Toast.LENGTH_SHORT).show();
         Button button = buttons[row][col];
@@ -111,7 +112,7 @@ public class GameUI extends AppCompatActivity {
 
         //Shows image if mine present
         if (Game.minePresent(row,col)) {
-            updateGame();
+            //updateGame();
             // Does not scale image.
             // Scale image to button: Only works in JellyBean!
             int newWidth = button.getWidth();
@@ -123,11 +124,16 @@ public class GameUI extends AppCompatActivity {
 
             // Change text on button:
             button.setText(" ");
+            scansUsed++;
         }
         else {
-            updateGame();
+            scansUsed++;
+            int number = Game.Scan(row, col);
+            button.setText(""+number);
         }
     }
+
+
 
     private void lockButtonSizes() {
         for (int row = 0; row < options.getNumRows(); row++) {
@@ -151,15 +157,30 @@ public class GameUI extends AppCompatActivity {
         numScans.setText("" + scansUsed);
     }
 
-    private void updateGame() {
-        int rows = Game.getNumRows();
-        int cols = Game.getNumColumns();
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                Button btn = buttons[i][j];
-            }
-        }
-    }
+//    private void updateGame() {
+//        int rows = Game.getNumRows();
+//        int cols = Game.getNumColumns();
+//        Button button = buttons[rows][cols];
+//
+//        for (int i = 0; i < rows; i++) {
+//            if Game.isMineScanned(rows,cols) {
+//                button.setText();
+//
+//            }
+//
+//
+//            for (int j = 0; j < cols; j++) {
+//
+//            }
+//        }
+//    }
+//
+//    private void updateGame(int row, int col) {
+//        int number = Game.Scan(row, col);
+//        Button button = new Button(this);
+//        button.setText(""+number);
+//
+//    }
 
 }
 
