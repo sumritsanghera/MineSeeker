@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/h_author"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/JellyFishFields"
+    tools:context=".HelpUI">
+
+    <TextView
+        android:id="@+id/h_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Help"
+        android:textColor="#000000"
+        android:textSize="38sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/h_aboutTheAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="About the author"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/h_gameInfo"
+        app:layout_constraintTop_toBottomOf="@+id/h_gameInfo" />
+
+    <TextView
+        android:id="@+id/h_gameInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="Game Information"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/h_help" />
+
+    <TextView
+        android:id="@+id/h_gameInfo2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/About_Game"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/h_gameInfo"
+        app:layout_constraintTop_toBottomOf="@+id/h_gameInfo" />
+
+    <TextView
+        android:id="@+id/h_hyperlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hyperlink"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/h_author2"
+        app:layout_constraintTop_toBottomOf="@+id/h_author2" />
+
+    <TextView
+        android:id="@+id/h_author2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/About_Author"
+        android:textColor="#070707"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/h_aboutTheAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/h_aboutTheAuthor" />
+
+    <TextView
+        android:id="@+id/h_Links"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Links"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/h_aboutTheAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/h_hyperlink" />
+
+    <TextView
+        android:id="@+id/h_links2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/Links"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/h_Links"
+        app:layout_constraintTop_toBottomOf="@+id/h_Links" />
+</androidx.constraintlayout.widget.ConstraintLayout>
