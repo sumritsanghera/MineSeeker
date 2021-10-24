@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/m_MainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Main Menu"
@@ -26,39 +26,40 @@
         android:id="@+id/ms_playgame"
         android:layout_width="248dp"
         android:layout_height="71dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="380dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="28dp"
         android:text="Play Game"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/m_MainMenu" />
 
     <Button
         android:id="@+id/ms_options"
         android:layout_width="248dp"
         android:layout_height="71dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="380dp"
+        android:layout_marginTop="24dp"
         android:text="Options"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ms_playgame"
         app:layout_constraintTop_toBottomOf="@+id/ms_playgame" />
 
     <Button
         android:id="@+id/ms_help"
         android:layout_width="248dp"
         android:layout_height="71dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="380dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="24dp"
         android:text="Help"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/ms_options"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ms_options"
         app:layout_constraintTop_toBottomOf="@+id/ms_options" />
+
+    <ImageView
+        android:id="@+id/ms_image"
+        android:layout_width="316dp"
+        android:layout_height="298dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ms_help"
+        app:layout_constraintStart_toEndOf="@+id/ms_options"
+        app:layout_constraintTop_toBottomOf="@+id/m_MainMenu"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/mrkrabs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

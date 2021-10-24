@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/black"
+    android:background="@color/teal_700"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WelcomeScreen">
@@ -12,7 +12,7 @@
       android:id="@+id/ws_title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Welcome Screen"
+      android:text="Plankton Seeker"
       android:textColor="#FFFFFF"
       android:textSize="38sp"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +20,7 @@
       app:layout_constraintHorizontal_bias="0.498"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.183" />
+      app:layout_constraintVertical_bias="0.091" />
 
   <TextView
       android:id="@+id/ws_author"
@@ -32,20 +32,39 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+      app:layout_constraintTop_toBottomOf="@+id/mrkrabs" />
 
   <Button
       android:id="@+id/ws_button"
       android:layout_width="80dp"
       android:layout_height="53dp"
-      android:layout_marginTop="16dp"
-      android:layout_marginBottom="47dp"
+      android:layout_marginEnd="116dp"
+      android:layout_marginBottom="180dp"
       android:background="@color/teal_200"
       android:text="skip"
       android:textColor="@color/black"
-      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintBottom_toBottomOf="@+id/ws_author"
+      app:layout_constraintEnd_toEndOf="parent" />
+
+  <ImageView
+      android:id="@+id/plankton"
+      android:layout_width="177dp"
+      android:layout_height="162dp"
+      android:layout_marginEnd="180dp"
+      app:layout_constraintBottom_toBottomOf="@+id/mrkrabs"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/ws_author"
-      app:layout_constraintVertical_bias="0.0" />
+      app:layout_constraintTop_toBottomOf="@+id/ws_title"
+      app:layout_constraintVertical_bias="0.747"
+      app:srcCompat="@drawable/plankton_welcomescreen" />
+
+  <ImageView
+      android:id="@+id/mrkrabs"
+      android:layout_width="253dp"
+      android:layout_height="273dp"
+      android:layout_marginEnd="20dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/plankton"
+      app:layout_constraintTop_toBottomOf="@+id/ws_title"
+      app:layout_constraintVertical_bias="0.0"
+      app:srcCompat="@drawable/mrkrabs_welcomescreen" />
 </androidx.constraintlayout.widget.ConstraintLayout>

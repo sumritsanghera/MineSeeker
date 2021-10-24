@@ -1,11 +1,14 @@
 package com.example.cmpt276as3.model;
 
+/*
+MineLogic class stores booleans of if the mines are selected, present in the [row][col]
+and if it is hidden or visible.
+ */
+
 public class MineLogic {
     private boolean minePresent = false;
     private boolean mineHidden = true;
     private boolean mineScanned = false;
-    private int numScan = 0;
-    private boolean mineClicked = false;
 
     public MineLogic(boolean minePresent) {
         this.minePresent = minePresent;
@@ -24,21 +27,12 @@ public class MineLogic {
         return visible;
     }
 
-    public boolean isMineClicked() {
-        return mineClicked;
-    }
-
-
     public boolean isMineScanned() {
         return mineScanned;
     }
 
     public void setMinePresent(boolean minePresent) {
         this.minePresent = minePresent;
-    }
-
-    public void setMineClicked(boolean pressed) {
-        mineClicked = pressed;
     }
 
     public void setMineHidden(boolean mineHidden) {
