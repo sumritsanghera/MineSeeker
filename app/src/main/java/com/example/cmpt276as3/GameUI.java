@@ -1,6 +1,7 @@
 package com.example.cmpt276as3;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -169,6 +170,13 @@ public class GameUI extends AppCompatActivity {
         TextView numMinesScan = (TextView) findViewById(R.id.g_numMines);
         numMinesScan.setText("Found " + foundMines + " Mines");
     }
+//
+//    private void Fragment() {
+//        FragmentManager fm = getSupportFragmentManager();
+//        MessageFragment dialog = new MessageFragment();
+//        dialog.show(fm, "Message Dialog");
+//
+//    }
 
 }
 
