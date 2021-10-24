@@ -37,21 +37,7 @@ public class OptionsUI extends AppCompatActivity {
     }
 
 
-    private void saveButton() {
-        Button btn = (Button) findViewById(R.id.find_selected);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RadioGroup boardSize = (RadioGroup) findViewById(R.id.radioGroupGameOptions);
-                int idOfSelected = boardSize.getCheckedRadioButtonId();
-                RadioButton radioButton = findViewById(idOfSelected);
-
-
-            }
-        });
-    }
-
-
+    //Dr Fraser Youtube Video
     private void GameSizeRadioButtons() {
         RadioGroup group = (RadioGroup) findViewById(R.id.radioGroupGameOptions);
 
@@ -78,7 +64,7 @@ public class OptionsUI extends AppCompatActivity {
                 }
             });
             //setChecked
-            //https://www.tabnine.com/code/java/methods/android.widget.CheckBox/setChecked
+            //https://stackoverflow.com/questions/4134582/how-to-set-a-radio-button-in-android
             int selectedRow = gameOptions.getNumRows();
             boolean buttonSelected = (selectedRow == numCellRow);
             group.addView(button);
@@ -107,7 +93,6 @@ public class OptionsUI extends AppCompatActivity {
                 public void onClick(View view) {
 
                     gameOptions.setNumMines(numMine);
-                    //saveMine(gameOptions);
 
                     Toast.makeText(OptionsUI.this, numMine + " Mines Selected"
                             , Toast.LENGTH_SHORT).show();
@@ -127,57 +112,4 @@ public class OptionsUI extends AppCompatActivity {
         }
     }
 
-    //https://stackoverflow.com/questions/11482111/how-to-save-the-state-of-radio-buttons
-    private void saveSize(OptionsLogic options) {
-
-        SharedPreferences sizeShare = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = sizeShare.edit();
-
-        editor.putInt("row number",options.getNumRows());
-        editor.putInt("col number",options.getNumColumns());
-        editor.apply();
-    }
-
-    private void saveMine(OptionsLogic options) {
-
-        SharedPreferences mineShare = this.getSharedPreferences("mineShare",MODE_PRIVATE);
-        SharedPreferences.Editor editor = mineShare.edit();
-
-        editor.putInt("mine number", options.getNumMines());
-        editor.apply();
-    }
-
-    public void getRowNumberSaved(){
-        RadioGroup boardSize = (RadioGroup) findViewById(R.id.radioGroupGameOptions);
-        int idOfSelected = boardSize.getCheckedRadioButtonId();
-        RadioButton radioButton = findViewById(idOfSelected);
-
-        SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(this);
-        int row = gameOptions.getNumRows();
-        radioButton.getResources().getInteger(row);
-
-    }
-
-     public void getColNumberSaved(){
-        RadioGroup boardSize = (RadioGroup) findViewById(R.id.radioGroupGameOptions);
-        int idOfSelected = boardSize.getCheckedRadioButtonId();
-        RadioButton radioButton = findViewById(idOfSelected);
-
-        SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(this);
-        int col = gameOptions.getNumColumns();
-        radioButton.getResources().getInteger(col);
-
-    }
-
-
-     public void getMineNumberSaved(){
-         RadioGroup radioMines = (RadioGroup) findViewById(R.id.radioGroupMineOptions);
-         int idOfSelected = radioMines.getCheckedRadioButtonId();
-         RadioButton radioButton = findViewById(idOfSelected);
-
-         SharedPreferences share = PreferenceManager.getDefaultSharedPreferences(this);
-         int mines = gameOptions.getNumMines();
-         radioButton.getResources().getInteger(mines);
-
-    }
 }

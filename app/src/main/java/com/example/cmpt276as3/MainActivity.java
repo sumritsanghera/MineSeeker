@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupOptionButton();
         setupGameButton();
+        setupHelpButton();
 
 
     }
@@ -46,6 +47,20 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void setupHelpButton() {
+        Button btn_options = (Button) findViewById(R.id.ms_help);
+        btn_options.setBackgroundColor(Color.BLACK);
+        btn_options.setTextColor(Color.WHITE);
+        btn_options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, HelpUI.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }

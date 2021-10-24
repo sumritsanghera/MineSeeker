@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CMPT276As3">
         <activity
+            android:name=".HelpUI"
+            android:exported="true"
+            android:screenOrientation="landscape"/>
+        <activity
             android:name=".GameUI"
             android:exported="true"
             android:screenOrientation="landscape" />

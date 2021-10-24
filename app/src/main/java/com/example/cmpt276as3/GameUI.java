@@ -20,19 +20,20 @@ import android.widget.Toast;
 import com.example.cmpt276as3.model.GameLogic;
 import com.example.cmpt276as3.model.OptionsLogic;
 
+import org.w3c.dom.Text;
+
 public class GameUI extends AppCompatActivity {
 
     //private static final int NUM_ROWS = 6;
     //private static final int NUM_COLS = 4;
-    static int scansUsed = 0;
-
     OptionsLogic options = OptionsLogic.getInstance();
     private GameLogic Game = new GameLogic(options.getNumRows(), options.getNumColumns(),
             options.getNumMines());
 
 
     Button[][] buttons = new Button[options.getNumRows()][options.getNumColumns()];
-    ImageView img;
+    static int foundMines = 0;
+    static int scansUsed = 0;
 
 
     @Override
@@ -40,14 +41,6 @@ public class GameUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         getSupportActionBar().hide();
-
-//        OptionsLogic options = OptionsLogic.getInstance();
-//        Game = new GameLogic(options.getNumRows(),
-//                            options.getNumColumns(), options.getNumMines());
-//
-//        buttons = new Button[options.getNumRows()][options.getNumColumns()];
-
-
 
         populateButtons();
         updateScans();
@@ -88,6 +81,7 @@ public class GameUI extends AppCompatActivity {
                     public void onClick(View v) {
 
                         gridButtonClicked(FINAL_COL, FINAL_ROW);
+
                     }
                 });
 
@@ -124,12 +118,14 @@ public class GameUI extends AppCompatActivity {
 
             // Change text on button:
             button.setText(" ");
-            scansUsed++;
+            updateGame(row,col);
+            foundMines++;
+            updateMines();
         }
         else {
+            updateGame(row, col);
             scansUsed++;
-            int number = Game.Scan(row, col);
-            button.setText(""+number);
+            updateScans();
         }
     }
 
@@ -152,35 +148,27 @@ public class GameUI extends AppCompatActivity {
     }
     //END SOURCE CODE
 
-    private void updateScans() {
-        TextView numScans = (TextView) findViewById(R.id.g_numScans);
-        numScans.setText("" + scansUsed);
+
+    private void updateGame(int row, int col) {
+        int number = Game.Scan(row, col);
+        Button button = buttons[row][col];
+        if(Game.minePresent(row,col) == false) {
+            button.setText("" + number);
+        }
+        else {
+            button.setText(" ");
+        }
     }
 
-//    private void updateGame() {
-//        int rows = Game.getNumRows();
-//        int cols = Game.getNumColumns();
-//        Button button = buttons[rows][cols];
-//
-//        for (int i = 0; i < rows; i++) {
-//            if Game.isMineScanned(rows,cols) {
-//                button.setText();
-//
-//            }
-//
-//
-//            for (int j = 0; j < cols; j++) {
-//
-//            }
-//        }
-//    }
-//
-//    private void updateGame(int row, int col) {
-//        int number = Game.Scan(row, col);
-//        Button button = new Button(this);
-//        button.setText(""+number);
-//
-//    }
+    private void updateScans() {
+        TextView numScans = (TextView) findViewById(R.id.g_scansUsed);
+        numScans.setText("Scans Used: " + scansUsed);
+    }
+
+    private void updateMines() {
+        TextView numMinesScan = (TextView) findViewById(R.id.g_numMines);
+        numMinesScan.setText("Found " + foundMines + " Mines");
+    }
 
 }
 

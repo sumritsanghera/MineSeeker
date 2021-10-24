@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">MineSeeker</string>
+
+    <string name="hyperlink">Please visit <a href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/home"
+        >CMPT276.com</a></string>
+
+    <string name="About_Game">Plankton has escaped with the Krabby Patty Secret Forumula!
+        Tap the buttons in the game to help Mr. Krabs uncover Plankton and all his clones, and save the Krusty Krab!
+    </string>
+
+    <string name="About_Author">Sumrit Sanghera is a student in Dr. Brian Frasers CMPT276 Class.
+        He is also an avid Spongebob Fan.</string>
+
+    <string name="Links">https://www.freepnglogos.com/images/line-40935.html
+    https://www.pinterest.ca/kristirusso3/bikini-bottom-spongebob-background/
+    https://cutewallpaper.org/21/spongebob-bikini-bottom-background/view-page-21.html
+    https://bhopanimation.tumblr.com/post/638185645835157504?is_highlighted_post=1
+    https://figpin.com/products/mr-krabs-with-plankton-468</string>
 </resources>

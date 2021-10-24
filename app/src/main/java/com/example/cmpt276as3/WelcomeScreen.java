@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class WelcomeScreen extends AppCompatActivity {
-    private static int TIMEOUT = 2000;
+    //private static int TIMEOUT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +21,14 @@ public class WelcomeScreen extends AppCompatActivity {
 
         setupSkipButton();
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent mainIntent = new Intent(WelcomeScreen.this, MainActivity.class);
-                startActivity(mainIntent);
-                finish();
-            }
-        }, TIMEOUT);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent mainIntent = new Intent(WelcomeScreen.this, MainActivity.class);
+//                startActivity(mainIntent);
+//                finish();
+//            }
+//        }, TIMEOUT);
 
     }
 

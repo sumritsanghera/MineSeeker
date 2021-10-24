@@ -2,6 +2,11 @@ package com.example.cmpt276as3.model;
 
 import java.util.Random;
 
+/*
+GameLogic class has methods to implement the gameplay of the Game. It creates a layer of
+Mine Buttons behind the UI Buttons (Randomly!).
+*/
+
 public class GameLogic {
 
     private int numRows;
@@ -57,11 +62,13 @@ public class GameLogic {
 
         for (int i = 0; i < numColumns; i++) {
             if (mines[row][i].isMinePresent() == true) {
+                mines[row][i].setScan();
                 count++;
             }
         }
         for (int j = 0; j < numRows; j++) {
             if(mines[j][col].isMinePresent() == true) {
+                mines[j][col].setScan();
                 count++;
             }
         }
@@ -80,6 +87,5 @@ public class GameLogic {
     public boolean isMineScanned(int row, int col) {
         return mines[row][col].isMineScanned();
     }
-
 
 }

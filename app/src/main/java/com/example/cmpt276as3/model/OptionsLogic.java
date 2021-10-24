@@ -1,5 +1,10 @@
 package com.example.cmpt276as3.model;
 
+/*
+OptionsLogic class provides singleton support and stores the Number of Rows, Columns, and Mines
+by default, and selected by user.
+*/
+
 public class OptionsLogic {
 
     private int DEFAULT_NUM_ROWS = 4;
