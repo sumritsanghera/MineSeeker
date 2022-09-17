@@ -11,3 +11,5 @@ Includes:
 ![Alt text](/app/src/main/res/drawable/options_menu.png/?raw=true "Options Menu")
 ![Alt text](/app/src/main/res/drawable/mine_board.png/?raw=true "Mine Board")
 ![Alt text](/app/src/main/res/drawable/gameplay.png/?raw=true "Gameplay")
+
+(# on buttons showcases sum of 'mines' that are present in row and column)
